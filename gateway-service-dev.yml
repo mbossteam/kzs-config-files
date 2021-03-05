@@ -13,18 +13,18 @@ spring:
   application:
     name: gateway-service
     
-#  security:
-#    oauth2:
-#      client:
-#        provider:
-#          keycloak:
-#            token-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm/protocol/openid-connect/token
-#            issuer-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm
-#            user-name-attribute: preferred_username
-#        registration:
-#          keycloak:
-#            client-id: spring-cloud-gateway-client
-#            client-secret: 0c592926-0ebc-418f-8f60-85e7f70d7260
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            token-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm/protocol/openid-connect/token
+            issuer-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: spring-cloud-gateway-client
+            client-secret: 0c592926-0ebc-418f-8f60-85e7f70d7260
   cloud:
     gateway:
       routes:
@@ -34,8 +34,8 @@ spring:
             - Path=/user/**
           filters:
             - RemoveRequestHeader=Cookie
-#      default-filters:
-#      - TokenRelay
+      default-filters:
+      - TokenRelay
       globalcors:
         corsConfigurations:
           '[/**]':
