@@ -1,6 +1,14 @@
 server:
   port: 8765
-  
+
+logging:
+    level:
+      root: warn
+      springframework:
+        web: debug
+      org:
+        hibernate: error
+          
 spring:
   application:
     name: gateway-service
@@ -45,4 +53,3 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-          
