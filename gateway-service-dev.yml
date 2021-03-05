@@ -21,7 +21,7 @@ spring:
     gateway:
       routes:
         - id: core
-          uri:
+          uri: lb://core
           predicates:
             - Path=/user/**
           filters:
