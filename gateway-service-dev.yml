@@ -28,8 +28,8 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: core
-          uri: lb://core
+        - id: core-service
+          uri: lb://core-service
           predicates:
             - Path=/user/**
           filters:
@@ -44,7 +44,8 @@ spring:
             - GET
       discovery:
         locator:
-          enabled: true  
+          enabled: true
+          lower-case-service-id: true
 eureka:
   instance:
     hostname: localhost
