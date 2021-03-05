@@ -19,13 +19,13 @@ spring:
 #            client-secret: 0c592926-0ebc-418f-8f60-85e7f70d7260
   cloud:
     gateway:
-#      routes:
-#        - id: core
-#          uri:
-#          predicates:
-#            - Path=/user/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
+      routes:
+        - id: core
+          uri:
+          predicates:
+            - Path=/user/**
+          filters:
+            - RemoveRequestHeader=Cookie
 #      default-filters:
 #      - TokenRelay
       globalcors:
