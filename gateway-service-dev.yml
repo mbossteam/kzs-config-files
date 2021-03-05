@@ -4,11 +4,11 @@ server:
 logging:
     level:
       root: warn
-      springframework:
-        web: debug
       org:
+        springframework:
+          web: debug
         hibernate: error
-          
+
 spring:
   application:
     name: gateway-service
