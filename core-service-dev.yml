@@ -3,11 +3,11 @@ server:
 
 logging:
   level:
-    root: TRACE
+    root: INFO
     org:
       springframework:
-        web: TRACE
-      hibernate: TRACE
+        web: ERROR
+      hibernate: ERROR
   
 spring:
   application:
