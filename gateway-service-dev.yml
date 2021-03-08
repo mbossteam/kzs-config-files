@@ -34,6 +34,12 @@ spring:
             - Path=/user/**
           filters:
             - RemoveRequestHeader=Cookie
+        - id: demo-service
+          uri: lb://demo-service
+          predicates:
+            - Path=/demo/**
+          filters:
+            - RemoveRequestHeader=Cookie
       default-filters:
       - TokenRelay
       globalcors:
@@ -54,19 +60,3 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-
-keycloak:
-  auth-server-url: http://localhost:8080/auth
-  realm: mboss-realm
-  resource: mboss-client
-  credentials:
-    secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
-  bearer-only: true
-  public-client: true
-  security-constraints:
-    - auth-roles:
-      - mboss-roles
-      security-collections:
-      - name: 
-        patterns:
-        - /demo/*
