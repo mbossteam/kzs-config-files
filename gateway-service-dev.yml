@@ -18,8 +18,8 @@ spring:
       client:
         provider:
           keycloak:
-            token-uri: http://10.0.0.102:8080/auth/realms/mboss-realm/protocol/openid-connect/token
-            issuer-uri: http://10.0.0.102:8080/auth/realms/mboss-realm
+            token-uri: http://localhost:8080/auth/realms/mboss-realm/protocol/openid-connect/token
+            issuer-uri: http://localhost:8080/auth/realms/mboss-realm
             user-name-attribute: preferred_username
         registration:
           keycloak:
