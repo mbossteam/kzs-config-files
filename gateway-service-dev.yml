@@ -18,13 +18,13 @@ spring:
       client:
         provider:
           keycloak:
-            token-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm/protocol/openid-connect/token
-            issuer-uri: http://10.0.0.108:8090/auth/realms/spring-cloud-gateway-realm
+            token-uri: http://10.0.0.102:8080/auth/realms/mboss-realm/protocol/openid-connect/token
+            issuer-uri: http://10.0.0.102:8080/auth/realms/mboss-realm
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: spring-cloud-gateway-client
-            client-secret: 0c592926-0ebc-418f-8f60-85e7f70d7260
+            client-id: mboss-client
+            client-secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
   cloud:
     gateway:
       routes:
