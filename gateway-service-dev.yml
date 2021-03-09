@@ -66,19 +66,7 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-  
-  # security:
-  #   oauth2:
-  #     client:
-  #       provider:
-  #         keycloak:
-  #           token-uri: http://localhost:8080/auth/realms/mboss-realm/protocol/openid-connect/token
-  #           issuer-uri: http://localhost:8080/auth/realms/mboss-realm
-  #           user-name-attribute: preferred_username
-  #       registration:
-  #         keycloak:
-  #           client-id: mboss-client
-  #           client-secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
+
 eureka:
   instance:
     hostname: localhost
