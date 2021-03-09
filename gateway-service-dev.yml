@@ -3,32 +3,20 @@ server:
 
 logging:
     level:
-      root: INFO
+      root: WARN
       org:
         springframework:
           web: ERROR
-        hibernate: ERROR
+        security: DEBUG
+        oauth2: DEBUG
+
+keycloak-client:
+  server-url: http://localhost:8080/auth
+  realm:  spring-micro-main
 
 spring:
   application:
     name: gateway-service
-keycloak-client:
-  server-url: http://localhost:8080/auth
-  realm:  spring-micro-main
-    
-  # security:
-  #   oauth2:
-  #     client:
-  #       provider:
-  #         keycloak:
-  #           token-uri: http://localhost:8080/auth/realms/mboss-realm/protocol/openid-connect/token
-  #           issuer-uri: http://localhost:8080/auth/realms/mboss-realm
-  #           user-name-attribute: preferred_username
-  #       registration:
-  #         keycloak:
-  #           client-id: mboss-client
-  #           client-secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
-
   security:
     oauth2:
       client:
@@ -51,7 +39,6 @@ keycloak-client:
       resourceserver:
         jwt:
           jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
-
   cloud:
     gateway:
       routes:
@@ -79,6 +66,19 @@ keycloak-client:
         locator:
           enabled: true
           lower-case-service-id: true
+  
+  # security:
+  #   oauth2:
+  #     client:
+  #       provider:
+  #         keycloak:
+  #           token-uri: http://localhost:8080/auth/realms/mboss-realm/protocol/openid-connect/token
+  #           issuer-uri: http://localhost:8080/auth/realms/mboss-realm
+  #           user-name-attribute: preferred_username
+  #       registration:
+  #         keycloak:
+  #           client-id: mboss-client
+  #           client-secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
 eureka:
   instance:
     hostname: localhost
