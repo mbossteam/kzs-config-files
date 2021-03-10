@@ -24,7 +24,7 @@ spring:
         registration:
           keycloak:
             client-id: mboss-client
-            client-secret: 746d6767-6876-4b2f-8a81-7857ad00e85a
+            client-secret: d3746ce4-4194-4c36-aca1-b2857e71faf1
   cloud:
     gateway:
       routes:
