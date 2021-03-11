@@ -17,9 +17,6 @@ keycloak-client:
 spring:
   application:
     name: gateway-service
-    
-  profiles:
-    active: prd
 
   security:
     oauth2:
