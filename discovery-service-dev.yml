@@ -2,7 +2,7 @@ spring:
   application:
     name: discovery-service    
   profiles:
-    active: prd
+    active: dev
     
 server:
   port: 8761
