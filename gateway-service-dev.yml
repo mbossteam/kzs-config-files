@@ -11,7 +11,7 @@ logging:
         oauth2: DEBUG
 
 keycloak-client:
-  server-url: http://http://35.198.54.93:8090/auth
+  server-url: http://35.198.54.93:8090/auth
   realm:  mboss-realm
 
 spring:
