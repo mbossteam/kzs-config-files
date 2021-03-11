@@ -12,7 +12,7 @@ logging:
 
 keycloak-client:
   server-url: http://http://35.198.54.93:8090/auth
-  realm:  spring-micro-main
+  realm:  mboss-realm
 
 spring:
   application:
@@ -23,8 +23,8 @@ spring:
         registration:
           keycloak:
             provider: keycloak
-            client-id: spring-micro-gateway
-            client-secret: b5f969f7-91bb-4285-b112-5813b5bc14b7
+            client-id: mboss-client
+            #client-secret: b5f969f7-91bb-4285-b112-5813b5bc14b7
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8765/login/oauth2/code/keycloak
             scope: openid
@@ -47,13 +47,7 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - RemoveRequestHeader=Cookie
-        - id: demo-service
-          uri: lb://demo-service
-          predicates:
-            - Path=/demo/**
-          filters:
-            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Cookie        
       default-filters:
       - TokenRelay
       globalcors:
