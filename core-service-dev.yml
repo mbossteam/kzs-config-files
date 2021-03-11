@@ -16,6 +16,10 @@ keycloak-client:
 spring:
   application:
     name: core-service
+
+  profiles:
+    active: prd
+    
   security:
     oauth2:
       client:
