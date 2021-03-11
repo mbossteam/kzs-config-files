@@ -10,7 +10,7 @@ logging:
       hibernate: ERROR
       
 keycloak-client:
-  server-url: http://localhost:8080/auth
+  server-url: http://http://35.198.54.93:8090/auth
   realm:  spring-micro-main
 
 spring:
