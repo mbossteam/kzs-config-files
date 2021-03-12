@@ -5,8 +5,8 @@ spring:
     basic:
       enabled: true
     user: 
-      name: mboss
-      password: 1425613
+      name: ${BITBUCKET_USER}
+      password: ${BITBUCKET_PASS}
 
 server:
   port: 8761
