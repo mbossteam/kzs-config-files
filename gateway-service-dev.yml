@@ -47,7 +47,7 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - RemoveRequestHeader=Cookie        
+            - RemoveRequestHeader=Cookie
       default-filters:
       - TokenRelay
       globalcors:

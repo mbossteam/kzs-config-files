@@ -1,9 +1,15 @@
+server:
+  port: 8761
+
 spring:
   application:
     name: discovery-service
-
-server:
-  port: 8761
+  security:
+    basic:
+      enabled: true
+    user: 
+      name: ${BITBUCKET_USER}
+      password: ${BITBUCKET_PASS}
 
 logging:
   level:

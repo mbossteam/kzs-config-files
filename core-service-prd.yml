@@ -24,7 +24,6 @@ spring:
           keycloak:
             provider: keycloak
             client-id: mboss-client
-            #client-secret: 4a9401ad-bcea-4cbd-9ee0-33177eb8e808
             authorization-grant-type: authorization_code
             redirect-uri: http://35.198.54.93:${server.port}/login/oauth2/code/keycloak
             scope: openid
@@ -61,7 +60,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${BITBUCKET_USER}:${BITBUCKET_PASS}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
