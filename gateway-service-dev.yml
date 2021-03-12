@@ -27,7 +27,7 @@ spring:
             client-id: mboss-client
             #client-secret: b5f969f7-91bb-4285-b112-5813b5bc14b7
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8765/login/oauth2/code/keycloak
+            redirect-uri: http://35.198.54.93:8765/login/oauth2/code/keycloak
             scope: openid
         provider:
           keycloak:
@@ -64,7 +64,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: 35.198.54.93
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka
