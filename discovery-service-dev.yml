@@ -1,6 +1,12 @@
 spring:
   application:
     name: discovery-service
+  security:
+    basic:
+      enabled: true
+    user: 
+      name: mboss
+      password: 1425613
 
 server:
   port: 8761
