@@ -1,21 +1,22 @@
 server:
-  port: 42550
+  port: 8765
 
 logging:
-  level:
-    root: INFO
-    org:
-      springframework:
-        web: ERROR
-      hibernate: ERROR
-      
+    level:
+      root: INFO
+      org:
+        springframework:
+          web: ERROR
+        security: DEBUG
+        oauth2: DEBUG
+
 keycloak-client:
   server-url: http://35.198.54.93:8090/auth
-  realm:  mboss-realm-dev
+  realm:  mboss-realm
 
 spring:
   application:
-    name: core-service
+    name: gateway-service
 
   security:
     oauth2:
@@ -23,9 +24,9 @@ spring:
         registration:
           keycloak:
             provider: keycloak
-            client-id: mboss-client-dev
+            client-id: mboss-client
             authorization-grant-type: authorization_code
-            redirect-uri: http://35.198.54.93:${server.port}/login/oauth2/code/keycloak
+            redirect-uri: http://35.198.54.93:8765/login/oauth2/code/keycloak
             scope: openid
         provider:
           keycloak:
@@ -38,33 +39,33 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
-
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
-  
-  jpa:
-    database-plataform: org.hibernate.dialect.H2Dialect
-    hibernate.ddl-auto: update
-
-  h2:
-    console:
-      enable: true
-      path: /h2-console
+  cloud:
+    gateway:
+      routes:
+        - id: core-service
+          uri: lb://core-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - RemoveRequestHeader=Cookie        
+      default-filters:
+      - TokenRelay
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+            - GET
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
 
 eureka:
   instance:
-    hostname: localhost
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    hostname: 35.198.54.93
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-
-management:
-  endpoint:
-    health:
-      show-details: always
