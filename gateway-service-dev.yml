@@ -66,6 +66,6 @@ eureka:
     hostname: localhost
   client:
     serviceUrl:
-      defaultZone: http://mbossdev:3162514kzs8@${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${BITBUCKET_USER}:${BITBUCKET_PASS}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
