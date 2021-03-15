@@ -43,8 +43,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://35.198.54.93:5432/dbcore
-    username: 
-    password: postgres
+    username: develop
+    password: 3162514
   # JPA properties
   jpa:
     hibernate:
