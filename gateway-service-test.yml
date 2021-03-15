@@ -2,19 +2,17 @@ server:
   port: 8765
 
 logging:
-  level:
-    root: INFO
-    org:
-      springframework:
-        web: ERROR
-      security: DEBUG
-      oauth2: DEBUG
+    level:
+      root: INFO
+      org:
+        springframework:
+          web: ERROR
+        security: DEBUG
+        oauth2: DEBUG
 
-keycloak:
-  auth-server-url: http://35.198.54.93:8090/auth
-  realm: mboss-realm-dev
-  #resource: mboss-client-dev
-  #public-client: true
+keycloak-client:
+  server-url: http://35.198.54.93:8090/auth
+  realm:  mboss-realm-dev
 
 spring:
   application:
@@ -32,15 +30,15 @@ spring:
             scope: openid
         provider:
           keycloak:
-            authorization-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/auth
-            token-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
-            user-info-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/userinfo
-            jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+            authorization-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/auth
+            token-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/token
+            user-info-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/userinfo
+            jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
             user-name-attribute: name
             user-info-authentication-method: header
       resourceserver:
         jwt:
-          jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+          jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
@@ -50,20 +48,14 @@ spring:
             - Path=/user/**
           filters:
             - RemoveRequestHeader=Cookie
-        - id: totest-service
-          uri: lb://totest-service
-          predicates:
-            - Path=/**
-          filters:
-            - RemoveRequestHeader=Cookie
       default-filters:
-        - TokenRelay
+      - TokenRelay
       globalcors:
         corsConfigurations:
-          "[/**]":
+          '[/**]':
             allowedOrigins: "*"
             allowedMethods:
-              - GET
+            - GET
       discovery:
         locator:
           enabled: true
