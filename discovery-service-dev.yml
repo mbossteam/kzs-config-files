@@ -8,8 +8,8 @@ spring:
     basic:
       enabled: true
     user: 
-      name: ${BITBUCKET_USER}
-      password: ${BITBUCKET_PASS}
+      name: ${GIT_USER}
+      password: ${GIT_PASS}
 
 logging:
   level:

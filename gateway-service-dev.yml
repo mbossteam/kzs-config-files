@@ -66,6 +66,6 @@ eureka:
     hostname: localhost
   client:
     serviceUrl:
-      defaultZone: http://${BITBUCKET_USER}:${BITBUCKET_PASS}@${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${GIT_USER}:${GIT_PASS}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
