@@ -1,0 +1,79 @@
+server:
+  port: 8765
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: ERROR
+      security: DEBUG
+      oauth2: DEBUG
+
+keycloak:
+  auth-server-url: http://35.198.54.93:8090/auth
+  realm: mboss-realm-dev
+  resource: mboss-client-dev
+  public-client: true
+
+spring:
+  application:
+    name: gateway-service
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: mboss-client-dev
+            authorization-grant-type: authorization_code
+            redirect-uri: http://35.198.54.93:8765/login/oauth2/code/keycloak
+            scope: openid
+        provider:
+          keycloak:
+            authorization-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/auth
+            token-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
+            user-info-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/userinfo
+            jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+            user-name-attribute: name
+            user-info-authentication-method: header
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      routes:
+        - id: core-service
+          uri: lb://core-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - RemoveRequestHeader=Cookie
+        - id: totest-service
+          uri: lb://totest-service
+          predicates:
+            - Path=/**
+          filters:
+            - RemoveRequestHeader=Cookie
+      default-filters:
+        - TokenRelay
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${GIT_USER}:${GIT_PASS}@${eureka.instance.hostname}:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
