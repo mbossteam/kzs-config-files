@@ -48,6 +48,12 @@ spring:
             - Path=/user/**
           filters:
             - RemoveRequestHeader=Cookie
+        - id: totest-service
+          uri: lb://totest-service
+          predicates:
+            - Path=/**
+          filters:
+            - RemoveRequestHeader=Cookie
       default-filters:
       - TokenRelay
       globalcors:
