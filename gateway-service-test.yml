@@ -47,13 +47,7 @@ spring:
           predicates:
             - Path=/user/**
           filters:
-            - RemoveRequestHeader=Cookie
-        - id: totest-service
-          uri: lb://totest-service
-          predicates:
-            - Path=/**
-          filters:
-            - RemoveRequestHeader=Cookie
+            - RemoveRequestHeader=Cookie        
       default-filters:
       - TokenRelay
       globalcors:
