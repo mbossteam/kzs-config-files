@@ -13,8 +13,8 @@ logging:
 keycloak:
   auth-server-url: http://35.198.54.93:8090/auth
   realm: mboss-realm-dev
-  resource: mboss-client-dev
-  public-client: true
+  #resource: mboss-client-dev
+  #public-client: true
 
 spring:
   application:
