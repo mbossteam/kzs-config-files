@@ -2,17 +2,17 @@ server:
   port: 8765
 
 logging:
-    level:
-      root: INFO
-      org:
-        springframework:
-          web: ERROR
-        security: DEBUG
-        oauth2: DEBUG
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: ERROR
+      security: DEBUG
+      oauth2: DEBUG
 
-keycloak-client:
-  server-url: http://35.198.54.93:8090/auth
-  realm:  mboss-realm
+keycloak:
+  auth-server-url: http://35.198.54.93:8090/auth
+  realm: mboss-realm-dev
 
 spring:
   application:
@@ -24,21 +24,21 @@ spring:
         registration:
           keycloak:
             provider: keycloak
-            client-id: mboss-client
+            client-id: ${keycloak.realm}
             authorization-grant-type: authorization_code
-            redirect-uri: http://35.198.54.93:8765/login/oauth2/code/keycloak
+            redirect-uri: http://35.198.54.93:${server.port}/login/oauth2/code/keycloak
             scope: openid
         provider:
           keycloak:
-            authorization-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/auth
-            token-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/token
-            user-info-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/userinfo
-            jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
+            authorization-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/auth
+            token-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
+            user-info-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/userinfo
+            jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
             user-name-attribute: name
             user-info-authentication-method: header
       resourceserver:
         jwt:
-          jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
+          jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
@@ -49,13 +49,14 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
       default-filters:
-      - TokenRelay
+        - TokenRelay
       globalcors:
         corsConfigurations:
-          '[/**]':
+          "[/**]":
             allowedOrigins: "*"
             allowedMethods:
-            - GET
+              - GET
+              - POST
       discovery:
         locator:
           enabled: true
