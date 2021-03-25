@@ -62,10 +62,6 @@ spring:
           enabled: true
           lower-case-service-id: true
 
-# config:
-#   user: '{cipher}c896226b9f720c61c264b3c7c6b3811c781525b67bf813d405e1a98c82ca370c'
-#   pass: '{cipher}11a351005a5421974cdf073eda71aa2a50a8249f453d903c27a33db512070d3b'
-
 eureka:
   instance:
     hostname: localhost

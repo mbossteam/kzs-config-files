@@ -8,8 +8,8 @@ spring:
     basic:
       enabled: true
     user: 
-      name: ${GIT_USER}
-      password: ${GIT_PASS}
+      name: ${config.user}
+      password: ${config.pass}
 
 logging:
   level:
