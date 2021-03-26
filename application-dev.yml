@@ -1,7 +1,7 @@
 config:
   hostname: '{cipher}0f7839d2a9bcc5f406b9d82a1c103a0d838cc2f92edcb6467fa2931cd400402a'
-  user: '{cipher}c896226b9f720c61c264b3c7c6b3811c781525b67bf813d405e1a98c82ca370c'
-  pass: '{cipher}11a351005a5421974cdf073eda71aa2a50a8249f453d903c27a33db512070d3b'
+  user: '{cipher}${GIT_USER}'
+  pass: '{cipher}${GIT_PASS}'
   db:
     user: '{cipher}59e9e48164ca80a70f2e0f94ffd8f3d91173143a016124e0b93da9d8f3d7fcb6'
     pass: '{cipher}059f9a3e6f0c9d24dd9ff89dfbb03647b04c5dae790e0affe4d5997e785e66c8'
