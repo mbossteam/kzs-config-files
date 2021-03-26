@@ -11,13 +11,13 @@ logging:
       
 keycloak:
   realm: mboss-realm-dev
-  auth-server-url: http://35.198.54.93:8090/auth
+  auth-server-url: http://${config.hostname}:8090/auth
   ssl-required: external
   resource: mboss-client-dev
   use-resource-role-mappings: true
   bearer-only: true
   credentials:
-    secret: 4c33b9d8-4972-4793-b53f-2f30c8af3025
+    secret: ${config.keycloak.secret}
 
 spring:
   application:
@@ -32,9 +32,9 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://35.198.54.93:5432/dbcore
-    username: develop
-    password: 3162514
+    url: jdbc:postgresql://${config.hostname}:5432/dbcore
+    username: ${config.db.user}
+    password: ${config.db.pass}
   # JPA properties
   jpa:
     hibernate:
@@ -47,7 +47,7 @@ spring:
 
 eureka:
   instance:
-    hostname: 35.198.54.93
+    hostname: ${config.hostname}
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
     serviceUrl:

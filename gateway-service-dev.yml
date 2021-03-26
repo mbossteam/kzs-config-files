@@ -11,7 +11,7 @@ logging:
       oauth2: DEBUG
 
 keycloak:
-  auth-server-url: http://35.198.54.93:8090/auth
+  auth-server-url: http://${config.hostname}:8090/auth
   realm: mboss-realm-dev
 
 spring:
@@ -26,7 +26,7 @@ spring:
             provider: keycloak
             client-id: ${keycloak.realm}
             authorization-grant-type: authorization_code
-            redirect-uri: http://35.198.54.93:${server.port}/login/oauth2/code/keycloak
+            redirect-uri: http://${config.hostname}:${server.port}/login/oauth2/code/keycloak
             scope: openid
         provider:
           keycloak:
