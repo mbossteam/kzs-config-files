@@ -8,8 +8,8 @@ spring:
     basic:
       enabled: true
     user:
-      name: ${config.user}
-      password: ${config.pass}
+      name: mbossdev
+      password: Kzs83162514
 
 logging:
   level:
