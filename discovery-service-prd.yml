@@ -7,9 +7,9 @@ spring:
   security:
     basic:
       enabled: true
-    user: 
-      name: ${config.user}
-      password: ${config.pass}
+    user:
+      name: ${CONFIG_SERVER_USERNAME}
+      password: ${CONFIG_SERVER_PASSWORD}
 
 logging:
   level:
