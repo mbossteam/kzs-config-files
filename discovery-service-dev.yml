@@ -13,11 +13,13 @@ spring:
 
 logging:
   level:
-    root: INFO
     org:
       springframework:
-        web: ERROR
-      hibernate: ERROR
+        web:
+          client: DEBUG
+    com:
+      netflix:
+        discovery: DEBUG
 
 eureka:
   instance:
