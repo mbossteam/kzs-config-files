@@ -8,16 +8,16 @@ logging:
       springframework:
         web: ERROR
       hibernate: ERROR
-      
+
 keycloak:
   realm: mboss-realm-dev
-  auth-server-url: http://${config.hostname}:8090/auth
+  auth-server-url: http://${MS_ROOT_URL}:8090/auth
   ssl-required: external
   resource: mboss-client-dev
   use-resource-role-mappings: true
   bearer-only: true
   credentials:
-    secret: ${config.keycloak.secret}
+    secret: 4c33b9d8-4972-4793-b53f-2f30c8af3025
 
 spring:
   application:
@@ -34,7 +34,7 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password:
-  
+
   jpa:
     database-plataform: org.hibernate.dialect.H2Dialect
     hibernate.ddl-auto: update
@@ -50,7 +50,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
     serviceUrl:
-      defaultZone: http://${config.user}:${config.pass}@${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
