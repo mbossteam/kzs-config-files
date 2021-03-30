@@ -11,7 +11,7 @@ logging:
       oauth2: DEBUG
 
 keycloak:
-  auth-server-url: http://${config.hostname}:8090/auth
+  auth-server-url: http://${MS_ROOT_URL}:8090/auth
   realm: mboss-realm-dev
 
 spring:
@@ -26,7 +26,7 @@ spring:
             provider: keycloak
             client-id: ${keycloak.realm}
             authorization-grant-type: authorization_code
-            redirect-uri: http://${config.hostname}:${server.port}/login/oauth2/code/keycloak
+            redirect-uri: http://${MS_ROOT_URL}:${server.port}/login/oauth2/code/keycloak
             scope: openid
         provider:
           keycloak:
@@ -67,6 +67,6 @@ eureka:
     hostname: localhost
   client:
     serviceUrl:
-      defaultZone: http://${config.user}:${config.pass}@${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
