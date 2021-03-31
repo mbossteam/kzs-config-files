@@ -17,7 +17,7 @@ keycloak:
   use-resource-role-mappings: true
   bearer-only: true
   credentials:
-    secret: 4c33b9d8-4972-4793-b53f-2f30c8af3025
+    secret: ${CREDENTIALS_KEY}
 
 spring:
   application:

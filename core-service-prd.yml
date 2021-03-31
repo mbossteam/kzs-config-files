@@ -17,7 +17,7 @@ keycloak:
   use-resource-role-mappings: true
   bearer-only: true
   credentials:
-    secret: 4c33b9d8-4972-4793-b53f-2f30c8af3025
+    secret: ${CREDENTIALS_KEY}
 
 spring:
   application:
@@ -33,8 +33,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${MS_ROOT_URL}:5432/dbcore
-    username: develop
-    password: 1425613
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   # JPA properties
   jpa:
     hibernate:
