@@ -8,8 +8,8 @@ spring:
     basic:
       enabled: true
     user:
-      name: "{cipher}0cf2ef6f07dc2ff77dfd23f169b9e9a8fff74c423f447ae7699aea95cc07c738"
-      password: "{cipher}541f5902b1cfecdf141f08e7f8cd4a94a5521607de8080f199552673cc662ae5"
+      name: ${CONFIG_SERVER_USERNAME}
+      password: ${CONFIG_SERVER_PASSWORD}
 
 logging:
   level:
