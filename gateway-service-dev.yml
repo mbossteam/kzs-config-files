@@ -64,7 +64,7 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery-service
   client:
     serviceUrl:
       defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
