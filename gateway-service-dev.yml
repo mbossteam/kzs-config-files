@@ -61,9 +61,6 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-    user:
-      name: ${CONFIG_SERVER_USERNAME}
-      password: ${CONFIG_SERVER_PASSWORD}
 
 eureka:
   instance:
