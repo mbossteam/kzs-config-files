@@ -49,7 +49,6 @@ spring:
 eureka:
   instance:
     hostname: discovery-service
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}    
   client:
     serviceUrl:
       defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
