@@ -19,7 +19,7 @@ spring:
   application:
     name: core-service
 
-   security:
+  security:
     oauth2:
       client:
         registration:
