@@ -6,25 +6,37 @@ logging:
     root: INFO
     org:
       springframework:
-        web: ERROR
-      hibernate: ERROR
+        web: DEBUG
+      hibernate: DEBUG
+      security: DEBUG
+      oauth2: DEBUG
 
 keycloak:
-  realm: mboss-realm-dev
   auth-server-url: http://localhost:8090/auth
-  ssl-required: external
-  resource: mboss-client-dev
-  use-resource-role-mappings: true
-  bearer-only: true
-  credentials:
-    secret: ${CREDENTIALS_KEY}
+  realm: mboss-realm-dev    
 
 spring:
   application:
     name: core-service
 
-  security:
+   security:
     oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: ${keycloak.realm}
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:${server.port}/login/oauth2/code/keycloak
+            scope: openid
+        provider:
+          keycloak:
+            authorization-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/auth
+            token-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
+            user-info-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/userinfo
+            jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
+            user-name-attribute: name
+            user-info-authentication-method: header
       resourceserver:
         jwt:
           jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
@@ -46,15 +58,14 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
-#    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}    
+    hostname: discovery-service
   client:
     serviceUrl:
       defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 
-management:
-  endpoint:
-    health:
-      show-details: always
+# management:
+#   endpoint:
+#     health:
+#       show-details: always
