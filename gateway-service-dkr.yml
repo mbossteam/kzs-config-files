@@ -11,7 +11,7 @@ logging:
       oauth2: DEBUG
 
 keycloak:
-  auth-server-url: http://${SSO_URL}:8090/auth
+  auth-server-url: http://${SSO_URL}:8080/auth
   realm: mboss-realm-dev
 
 spring:
