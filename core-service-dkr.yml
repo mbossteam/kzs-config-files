@@ -13,7 +13,7 @@ logging:
 
 keycloak:
   realm: mboss-realm-dev
-  auth-server-url: http://172.30.0.3:8080/auth
+  auth-server-url: http://server-keycloak:8080/auth
   ssl-required: none
   resource: mboss-client-dev
   use-resource-role-mappings: true
