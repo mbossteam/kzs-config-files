@@ -13,7 +13,7 @@ logging:
 
 keycloak:
   realm: mboss-realm-dev
-  auth-server-url: http://${SSO_URL}:8080/auth
+  auth-server-url: http://${SSO_URL}:8090/auth
   ssl-required: external
   resource: mboss-client-dev
   use-resource-role-mappings: true
