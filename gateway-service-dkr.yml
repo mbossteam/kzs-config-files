@@ -63,10 +63,8 @@ spring:
           lower-case-service-id: true
 
 eureka:
-  instance:
-    hostname: discovery-service
   client:
     serviceUrl:
-      defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@${eureka.instance.hostname}:8761/eureka
+      defaultZone: http://${CONFIG_SERVER_USERNAME}:${CONFIG_SERVER_PASSWORD}@discovery-service:8761/eureka
     register-with-eureka: true
     fetch-registry: true
