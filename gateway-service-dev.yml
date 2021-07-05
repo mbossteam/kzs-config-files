@@ -45,7 +45,7 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/api/**
+            - Path=/api/**, /actuator/**
           filters:
             - RemoveRequestHeader=Cookie
       default-filters:
