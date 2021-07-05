@@ -14,7 +14,7 @@ logging:
 keycloak:
   realm: mboss-realm-dev
   auth-server-url: http://localhost:8090/auth
-  ssl-required: external
+  ssl-required: none
   resource: mboss-client-dev
   use-resource-role-mappings: true
   bearer-only: true
