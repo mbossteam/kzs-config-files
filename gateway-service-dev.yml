@@ -27,7 +27,7 @@ spring:
             client-id: ${keycloak.realm}
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:${server.port}/login/oauth2/code/keycloak
-            scope: openid, actuator
+            scope: openid
         provider:
           keycloak:
             authorization-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/auth
