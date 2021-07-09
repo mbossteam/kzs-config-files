@@ -53,7 +53,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:3000/dashboard"
+            allowedOrigins: "*"
             allowedMethods:
               - GET
               - POST
