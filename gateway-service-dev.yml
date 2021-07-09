@@ -45,18 +45,19 @@ spring:
         - id: core-service
           uri: lb://core-service
           predicates:
-            - Path=/api/**, /actuator/**
+            - Path=/api/**
           filters:
             - RemoveRequestHeader=Cookie
       default-filters:
         - TokenRelay
-#      globalcors:
-#        corsConfigurations:
-#          "[/**]":
-#            allowedOrigins: "http://localhost:3000"
-#            allowedMethods:
-#              - GET
-#              - POST
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: 
+              - "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
       discovery:
         locator:
           enabled: true
