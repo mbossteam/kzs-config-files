@@ -50,13 +50,13 @@ spring:
             - RemoveRequestHeader=Cookie
       default-filters:
         - TokenRelay
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "*"
-            allowedMethods:
-              - GET
-              - POST
+      # globalcors:
+      #   corsConfigurations:
+      #     '[/**]':
+      #       allowedOrigins: "*"
+      #       allowedMethods:
+      #         - GET
+      #         - POST
       discovery:
         locator:
           enabled: true
