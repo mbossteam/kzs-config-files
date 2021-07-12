@@ -34,7 +34,7 @@ spring:
             token-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/token
             user-info-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/userinfo
             jwk-set-uri: ${keycloak.auth-server-url}/realms/${keycloak.realm}/protocol/openid-connect/certs
-            user-name-attribute: name
+            user-name-attribute: preferred_username
             user-info-authentication-method: header
       resourceserver:
         jwt:
