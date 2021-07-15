@@ -2,7 +2,7 @@ server:
   port: 42550
 
 test:
-  name: Raphael
+  name: Raphael Rezzieri
 
 spring:
   application:
