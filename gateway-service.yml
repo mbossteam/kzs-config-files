@@ -6,17 +6,15 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      routes:
+        - id: product-ms
+          uri: lb://product-ms
+          predicates:
+            - Path=/api/**
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
-        routes:
-          - id: product-ms
-          uri: lb://product-ms
-          predicates:
-            - Path=/api/**
-          filters:
-            - RemoveRequestHeader=Cookie      
     loadbalancer:
       ribbon:
         enabled: false
