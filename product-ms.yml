@@ -1,6 +1,9 @@
 server:
   port: 42550
 
+test:
+  name: Raphael
+
 spring:
   application:
     name: product-ms
