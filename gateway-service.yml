@@ -23,6 +23,19 @@ spring:
     port: 5672
     username: guest
     password: guest
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8090/auth/realms/realm-ms
+        registration:
+          spring-cloud-gateway-client:
+            client-id: spring-cloud-gateway-client
+            client-secret: 90e00007-8faf-4309-a270-6f682e266134
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8765/login/oauth2/code/spring-cloud-gateway-client
 
 eureka:
   instance:
